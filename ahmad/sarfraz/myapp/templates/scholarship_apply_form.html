@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship apply form Islamia Universty Of Bahwalpur</title>
+</head>
+<body >
+    <table width='100%'>
+        <tr>
+            <th style='background-color: rgba(10, 111, 82, 0.783); height: 200px; border-radius: 40px; font-size: 40px;'>
+                Apply for Scholarship Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='40px'></tr>
+    </table>
+    <table width='100%'>
+            <th width='470px'></th>
+            <th style='background-color: rgba(10, 111, 82, 0.783); border-radius:20px;'>
+                <form method="POST"  enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type='submit' value='Apply' style='border-radius: 30px; background-color: orange;'>
+                </form>
+            </th>
+            <th width='470px'></th>
+        </tr>
+    </table>
+    
+</body>
+</html>

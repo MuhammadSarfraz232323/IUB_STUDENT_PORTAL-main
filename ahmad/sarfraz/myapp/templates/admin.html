@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Entry to Islamia Universty Of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%' height='200px'>
+        <tr>
+            <th height='140px' style='font-size: 30px; background-color: rgba(10, 111, 82, 0.783); border-radius: 20px;' colspan='4'>
+               Admin Login To Islamia Universty Of Bahawalpur
+            </th>
+        </tr>
+        <tr height='40px'></tr>
+    </table>
+    <table>
+        <tr>
+            {%include "Quid.html" %}
+        </tr>
+    </table>
+    <table width='100%'>
+        <tr>
+            <th>
+                <img src='{% static "image.jpg" %}' width='700px' height='600px' style='border-top-right-radius: 190px;'>
+            </th>
+            <th>
+                <form  method='POST' enctype='multipart/form-data' style='border: 2px solid black; background-color: rgba(10, 111, 82, 0.783); border-radius: 40px;'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Login' style='background-color: orange;'>
+                </form>
+            </th>
+            <th width='120px'>
+            </th>
+        </tr>
+
+    </table>
+
+    
+</body>
+</html>

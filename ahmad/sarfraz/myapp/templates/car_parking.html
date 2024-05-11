@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Parking Application Islamia Universty of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%' height='200px'>
+        <tr>
+            <th style='font-size: 30px; color: rgba(13, 189, 189, 0.858); font-size: 40px; background-color: rgba(10, 111, 82, 0.783); border-radius:20px;' height='200px' colspan='4' >
+                Car Parking Appplication Islamia Universty Of Bahawalpur
+            </th>
+        </tr>
+        <tr height='40px'></tr>
+    </table>
+    <table>
+        <tr>
+            {% include "Quid.html" %}
+        </tr>
+    </table>
+            <table width='100%'>
+        <tr>
+            <th>
+                <img src='{% static "car_parking_stand.jpeg" %}' width='700px' style='border-radius: 100px;'>
+            </th>
+            <th style='color: black;'>
+                <form method='POST' enctype='multipart/form-data' style='border: 2px solid black; background-color: rgba(10, 111, 82, 0.783); border-radius: 40px;'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Upload' style='background-color: rgb(0, 179, 255); border-radius:10px;'>
+                </form>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeat course application Islmia Universty Of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%'>
+        <tr>
+            <th height='130px' colspan='4' style=' font-size: 30px; background-color: rgba(10, 111, 82, 0.783); border-radius:20px;'>
+                Repeat course appplication Islamia Universty Of Bahawalpur
+            </th>
+        </tr>
+        <tr height='30px'></tr>
+    </table>
+    <table>
+        <tr>
+            {% include "Quid.html" %}
+        </tr>
+    </table>
+    <table width='100%'>
+        <tr>
+            <th width='300px'>
+            </th>
+            <th>
+                <form method='POST' enctype='multipart/form-data' style='background-color: rgba(10, 111, 82, 0.783); border-radius:20px;  border: 2px solid black; border-radius: 40px;'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Upload' style='border-radius: 10px; background-color: orange;'>
+                </form>
+            </th>
+            <th width='300px'>
+            </th>
+        </tr>
+    </table>
+    
+</body>
+</html>

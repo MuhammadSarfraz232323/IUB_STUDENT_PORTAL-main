@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions Islamia Universty Of bahawalpur </title>
+</head>
+<body>
+    {% load static %}
+    <table width='100%'>
+        <tr style='font-size: 30px;'>
+            <th height='200px' style='color: rgba(127, 255, 212, 0.771); background-color:rgba(10, 111, 82, 0.783); border-radius:20px;' colspan='4'>
+                Welcome to Admission cell of Islamia Universty Of Bahawalpur
+            </th>
+        </tr>
+        <tr height='40px'></tr>
+    </table>
+    <table width='100%'>
+        <tr>
+            {% include "Quid.html" %}
+        </tr>
+    </table>
+    <table width='100%'>
+        <tr>
+            <th>
+                <img src='{% static "image.jpg" %}' width='700px' height='500px' style='border-top-right-radius: 40px; border-top-left-radius: 40px;'>
+            </th>
+            <th colspan='4' style='background-color: rgba(10, 111, 82, 0.783); border-radius: 40px;'>
+                <form method='POST' enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Upload'>
+            </th>
+        </tr>
+    </table>
+    
+</body>
+</html>

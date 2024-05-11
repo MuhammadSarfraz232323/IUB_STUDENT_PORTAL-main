@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions data </title>
+</head>
+<body>
+    <table border='1'>
+        <tr height='100px'>
+            <th colspan='20' style='font-size: 30px; background-color: rgba(7, 50, 100, 0.602);'>
+                Admissions Data Islamia Unversty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='70px'>
+        </tr>
+        <tr style='font-size: 13px; background-color:   rgb(10, 84, 114);;'>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Father Occupation</th>            
+            <th>Phone Number</th>
+            <th>Email Adress</th>
+            <th>Password </th>
+            <th>Matric School name </th>
+            <th>Matric Marks</th>
+            <th>Matric Roll Number</th>
+            <th>Matric Board </th>
+            <th>Inter College Name </th>
+            <th>Inter Marks </th>
+            <th>Inter Roll Number</th>
+            <th>Department</th>
+            <th>Gender</th>
+            <th>Dated</th>
+            <th>Image</th>
+        </tr>
+        {% for x in object %}
+            <tr style='font-size: 13px;'>
+            <th>{{ x.name }}</th>
+            <th>{{ x.father_name }}</th>
+            <th>{{ x.father_occupation }}</th>
+            <th>{{ x.phone_number }}</th>
+            <th>{{ x.email_address }}</th>
+            <th>{{ x.password }}</th>
+            <th>{{ x.matric_school_name }}</th>
+            <th>{{ x.matric_marks }}</th>
+            <th>{{ x.matric_roll_number }}</th>
+            <th>{{ x.matric_board }}</th>
+            <th>{{ x.inter_college_name }}</th>
+            <th>{{ x.inter_marks }}</th>
+            <th>{{ x.inter_roll_number }}</th>
+            <th>{{ x.department }}</th>
+            <th>{{ x.Gender }}</th>
+            <th>{{ x.date }}</th>
+            <th><img src='{{ x.image.url }}' width='100px' height='100px' style='border-radius: 20px;'></th>
+            <!-- </tr>
+            <tr height='40px'>
+            </tr> -->
+        {% endfor %}    
+    </table>
+    
+</body>
+</html>

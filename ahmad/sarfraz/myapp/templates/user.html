@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New user creation IUB</title>
+</head>
+<body>
+    <table width='100%' style='background-color: grey;'>
+        <tr>
+            <th height='300px' style='font-size: 30px;'>
+                User creation form Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <form method='POST' enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Create' style='background-color: orange; border-radius: 40px;'>
+                </form>
+            </th>
+        </tr>
+    </table>
+    
+</body>
+</html>

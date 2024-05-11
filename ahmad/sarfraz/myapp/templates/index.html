@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamia Universt Of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%'>  
+        <tr height='100px'>
+            <th colspan='4' style=' border-radius: 20px;  background-color: rgba(10, 111, 82, 0.783);  font-size: 30px; color: rgba(0, 255, 174, 0.75);'>
+                The Islamia Universty Of Bahawalpur
+            </th>
+        </tr>    
+        <tr>  
+        </table>
+        <table width='100%'>
+        {% include 'Quid.html' %}
+        </tr> 
+        <table>
+        <table width='100%%'>
+        <tr>
+            <th>
+                <img src='{% static "iub.jpg" %}' width='800px' height='600px' style='border-top-right-radius: 170px;'>
+            </th>
+            <th>
+                <form   method='POST' enctype='multipart/form-data' style='border: 2px solid black; background-color:  rgba(10, 111, 82, 0.783); border-radius: 30px;' >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Signup' style='background-color: orange; border-radius: 10px;'>
+                    <br><br>
+                    Already have an Account ? <a href='login/'>Login</a>
+                    <br><br><br>
+                    Admin Login ?<a href='admin_login/'>Login</a>
+
+                </form>
+            </th>
+        </tr>
+
+    </table>
+    
+</body>
+</html>

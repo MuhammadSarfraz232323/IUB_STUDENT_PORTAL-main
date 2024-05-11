@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeat Course Data Islamia Universty Of Bahawalpur </title>
+</head>
+<body>
+    <table width='100%' border='1'>
+        <tr height='80px'>
+            <th style='background-color: rgba(7, 50, 100, 0.602);' colspan='10'>
+                Repeat Course Data Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='70px'>
+        </tr>
+        <tr style='background-color:  rgb(10, 84, 114);' height='30px'>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Phone Number</th>
+            <th>Department</th>
+            <th>Semester</th>
+            <th>Section</th>
+            <th>Applicant's Pic</th>
+        </tr>
+        <tr>
+            {% for x in object %}
+                <tr>
+                    <th>{{x.name}}</th>
+                    <th>{{x.father_name}}</th>
+                    <th>{{x.phone_number}}</th>
+                    <th>{{x.department}}</th>
+                    <th>{{x.semester}}</th>
+                    <th>{{x.section}}</th>
+                    <th><img src='{{x.image.url }}' width='100px' height='100px' style='border-radius: 30px;'></th>
+                </tr>
+            {% endfor %}
+        </tr>
+
+    </table>
+    
+</body>
+</html>

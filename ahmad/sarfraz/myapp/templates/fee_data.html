@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee concession applicants data Islamia Universty Of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%' border='1'>
+        <tr height='90px'>
+            <th style='background-color: rgba(7, 50, 100, 0.602); ' colspan='20'>
+                Fee concessions applicants data Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='100px'>
+        </tr>
+        <tr height='40px' style='background-color:  rgb(10, 84, 114);;'>
+            <th>Name </th>
+            <th>Father Name</th>
+            <th>Phone Number</th>
+            <th>Regstration Number</th>
+            <th>Department</th>
+            <th>Section</th>
+            <th>Monthly Income</th>
+            <th>Gender</th>
+            <th>Dated</th>
+            <th>Fee Challan Pic</th>
+        </tr>
+            {% for x in object %}
+                <tr>
+                    <th>{{x.name}}</th>
+                    <th>{{x.father_name}}</th>
+                    <th>{{x.phone_number}}</th>
+                    <th>{{x.registration_number}}</th>
+                    <th>{{x.department}}</th>
+                    <th>{{x.section}}</th>
+                    <th>{{x.monthly_income}}</th>
+                    <th>{{x.gender}}</th>
+                    <th>{{x.date}}</th>
+                    <th><img src='{{c.fee_challan}}' width='100px' height='100px'></th>
+                </tr>
+            {% endfor %}
+    </table>
+    
+</body>
+</html>

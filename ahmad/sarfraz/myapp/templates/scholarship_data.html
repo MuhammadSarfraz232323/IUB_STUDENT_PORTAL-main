@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Scholarships Data Islamia Universty Of Bahawalpur </title>
+</head>
+<body>
+    <table border='1' width='100%'>
+        <tr height='100px'>
+            <th style='background-color: rgba(7, 50, 100, 0.602); font-size: 20px;' colspan='20'>
+                Scholarship data Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='70px'>
+        </tr>
+        <tr style='background-color:  rgb(10, 84, 114);'>
+            <th>Name </th>
+            <th>Father Name</th>
+            <th>Phone Number</th>
+            <th>Email_address</th>
+            <th>Password</th>
+            <th>Roll_Number</th>
+            <th>Department</th>
+            <th>Semester</th>
+            <th>Section</th>
+            <th>Monthly Income</th>
+            <th>Gardian Profession</th>
+            <th>Dated</th>
+            <th>Gender</th>
+        </tr>
+        {% for x in object %}
+            <tr>
+                <th>{{x.name}}</th>
+                <th>{{x.father_name}}</th>
+                <th>{{x.phone_number}}</th>
+                <th>{{x.email_address}}</th>
+                <th>{{x.password}}</th>
+                <th>{{x.roll_number}}</th>
+                <th>{{x.department}}</th>
+                <th>{{x.semester}}</th>
+                <th>{{x.section}}</th>
+                <th>{{x.monthly_income}}</th>
+                <th>{{x.gardian_profession}}</th>
+                <th>{{x.date}}</th>
+                <th>{{x.gender}}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

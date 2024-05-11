@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Islamia Universty Of Bahawalpur </title>
+</head>
+<body style='background-color: grey;'>
+    {% load static %}
+    <table width='100%' height='200px'>
+        <tr>
+            <th height='200px' colspan='3' style='font-size: 30px; color: rgb(34, 188, 137); background-color: rgba(10, 111, 82, 0.783); border-radius: 20px;'>
+            Login To  Islamia Universty Of Bahawalpur
+            </th>
+        </tr>
+        <tr height='30px'></tr>
+    </table>
+    <table>
+        <tr>
+            {%include "Quid.html" %}
+        </tr>
+    </table>
+    <table width='100%'>
+            <th>
+                <img src='{% static "iub.jpg" %}' width='700px' style='border-radius: 100px;'>
+            </th>
+            <th>
+                <form  method='POST' enctype='multipart/form-data' style='border: 2px solid black; background-color: rgba(10, 111, 82, 0.783); border-radius: 20px;'>
+                    {% csrf_token %}
+                    {{form.as_p }}
+                    <input type='submit' value='Login' style='background-color: rgb(255, 191, 0);'>
+                </form>
+            </th>
+
+        </tr>
+    </table>
+    
+</body>
+</html>

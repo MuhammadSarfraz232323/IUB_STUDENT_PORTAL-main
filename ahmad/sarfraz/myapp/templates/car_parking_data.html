@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles Parking Data Islamia Universty Of Bahawalpur</title>
+</head>
+<body>
+    <table width='100%' border='1'>
+        <tr height='100px'>
+            <th style='background-color: rgba(7, 50, 100, 0.602);  font-size: 20px;' colspan='17'>
+                Vehicle Parking Applications Data Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr height='100px'>
+        </tr>
+        <tr style='background-color:  rgb(10, 84, 114);;'>
+            <th>Name</th>
+            <th>Father Name </th>
+            <th>Phone Number</th>
+            <th>Registration Number</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Type</th>
+            <th>Paid Challan Pic</th>
+        </tr>
+        {% for x in object %}
+            <tr>
+                <th>{{x.name}}</th>
+                <th>{{x.father_name}}</th>
+                <th>{{x.phone_number}}</th>
+                <th>{{x.registration_number}}</th>
+                <th>{{x.vehicle_number}}</th>
+                <th>{{x.vehicle_type}}</th>
+                <th><img src='{{x.upload_paid_challan_pic.url}}' width='100px' height='100px' style='border-radius: 20px;'></th>
+
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

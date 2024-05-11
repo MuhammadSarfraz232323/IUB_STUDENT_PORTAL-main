@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Ad upload Islamia Universty Of Bahawalpur </title>
+</head>
+<body>
+    <table width='100%'>
+        <tr>
+            <th height='300px' style='background-color: rgba(10, 111, 82, 0.783); border-radius: 40px;'>
+                Admin Scholarship Upload page Islamia Universty Of Bahawalpur 
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <form method='POST' enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='submit' value='Upload' style='background-color: orange; border-radius: 30px;'>
+                </form>
+            </th>
+        </tr>
+    </table>
+    
+</body>
+</html>
