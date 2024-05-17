@@ -20,6 +20,7 @@ from myapp.views import(
     parking,
     feed,
     library_card,
+    get_detail,
     repeat_a,
     signup_api
     )
@@ -42,6 +43,7 @@ urlpatterns = [
     path('admin_login/Admin/vehicle_parking_data/',parking),
     path('admin_login/Admin/scholarship_upload/',scholarshipupload),
     path('login/',fourth_url),
+    path('login/request_detail/',get_detail),
     path('login/main/',second_url),
     path('login/main/Admissions/',third_url),
     path('login/main/car_parking/',car_parking),

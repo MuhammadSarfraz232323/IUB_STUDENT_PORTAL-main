@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Islamia Universty Of Bahawalpur </title>
+    <style>
+        .sarfraz tr th{
+            height: 100px;
+            width: 140px;
+            border-radius: 30px;
+            background-color: rgba(55, 171, 163, 0.375);
+        }
+        .sarfraz tr th:hover{
+            background-color: rgb(31, 136, 106);
+        }
+        .sarfraz tr th a:hover{
+            color: orange;
+        }
+        </style>
 </head>
-<body style='background-color: grey;'>
+<body>
     {% load static %}
     <table width='100%' height='200px'>
         <tr>
@@ -26,14 +40,24 @@
             </th>
             <th>
                 <form  method='POST' enctype='multipart/form-data' style='border: 2px solid black; background-color: rgba(10, 111, 82, 0.783); border-radius: 20px;'>
+                    {% for x in messages %}
+                        <p style='color: white;'>{{ x }}</p>
+                    {% endfor %}    
                     {% csrf_token %}
                     {{form.as_p }}
                     <input type='submit' value='Login' style='background-color: rgb(255, 191, 0);'>
-                </form>
+                </form><br><br><br><br><br><br><br><br><br>
+                <div class='sarfraz'>
+                <table align='center'>
+                    <tr>
+                        <th style='font-size: 17px;'>
+                <a href='request_detail/'>Request For Detail</a>
+                        </th>
+                    </tr>
+                </table> 
+                </div>
             </th>
-
         </tr>
     </table>
-    
 </body>
 </html>

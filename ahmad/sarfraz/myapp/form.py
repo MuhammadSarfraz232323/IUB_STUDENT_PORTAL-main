@@ -261,3 +261,9 @@ class otp_form(forms.Form):
     otp_variable=forms.CharField(label='',widget=forms.TextInput(attrs={
         "placeholder":"Enter your OTP"
     }))            
+
+class Detail(forms.Form):
+    cnic=forms.CharField(label='',widget=forms.TextInput(attrs={
+        "placeholder":"Enter your CNIC",
+        "pattern":"[0-9]{5}-[0-9]{7}-[0-9]{1}"
+    }))    

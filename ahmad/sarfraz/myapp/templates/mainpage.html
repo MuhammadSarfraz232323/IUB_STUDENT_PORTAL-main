@@ -38,7 +38,12 @@
         <tr style=' font-size: 30px;' height='100px'>
             <th colspan='3' style='color: rgba(127, 255, 212, 0.893); background-color:rgba(10, 111, 82, 0.783); border-radius: 20px;'>The Islamia Universty Of Bahawalpur</th>
         </tr>
-        <tr height='30px'></tr>
+        <tr height='30px'><th>
+            {% for x in messages %}
+                <p>{{ x }}</p>
+            {% endfor %}    
+        </th>
+    </tr>
     </table>
     <div class='sarfraz'>
     <table width='100%'>

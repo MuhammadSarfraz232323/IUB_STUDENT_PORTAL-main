@@ -8,7 +8,8 @@ from .form import (signup,Admissionf,Myform,Adminf,Car_parkingf,
     Libraryf,Feef,Repeat_coursef,
     scholarshipf,
     scholarship_dataf,
-    otp_form
+    otp_form,
+    Detail
     )
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -55,23 +56,37 @@ otp_verification_variable=False
 otp_list=[]
 name_list=[]
 email_list=[]
-variable_list=['sarfraz']
+father_list=[]
+phone_number_list=[]
+password_list=[]
+cnic_list=[]
+variable_list=[3]
 def first_url(request):
     form=signup()
     if request.method=="POST":
         form=signup(request.POST)
         if form.is_valid():
-            empty(variable_list)
             empty(name_list)    #  WE defined a function to make a list empty before it gets another value 
             empty(email_list)
             empty(otp_list)  
+            empty(password_list)
+            empty(phone_number_list)
+            empty(father_list)
+            empty(cnic_list)
             name=request.POST['name']
             name_list.append(name)
             email=request.POST['email_address']
             email_list.append(email)
+            father_name=request.POST['father_name']
+            father_list.append(father_name)
+            phone_number=request.POST['phone_number']
+            phone_number_list.append(phone_number)
+            password=request.POST['password']
+            password_list.append(password)
             otp=random.randint(100000,999999)
             otp_list.append(otp)
             cnic=request.POST['cnic']
+            cnic_list.append(cnic)
             print(otp)
             context={
                 "form":name,
@@ -93,16 +108,14 @@ def first_url(request):
             cursor.execute(query)
             variable=cursor.fetchall()
             for i in variable:
-                check_list.append(i[6])
+                check_list.append(i[5])
             connection.commit()
             if cnic in check_list:
-                return HttpResponse("<h1 align='center'>Your Account has already been created !! Please try to login</h1>")
+                messages.success(request,"This CNIC is already registered !! ")
             else:
                 message.attach_alternative(html_message,"text/html")
                 try:
-                    # message.send()
-                    Signup.objects.create(**form.cleaned_data)
-                    messages.success(request," Account created Successfully !! Plaese Put the OTP below that you just have received by youe email ")
+                    message.send()
                     return redirect('otp/')
                 except:    
                     return HttpResponse("<h1 align='center'>There is some problem please try again </h1>")    
@@ -119,38 +132,49 @@ def otp_template(request):
         if form.is_valid():
             name=request.POST['otp_variable']
             print(form.cleaned_data)
-            if int(otp_list[0])==int(name):
-                variable_list.insert(0,1)
-                return redirect('signup/')
-            else:
-                variable_list.insert(0,"sarfraz")
-                return HttpResponse("<h1 align='center'>The OTP Entered by you is incorrect .Please try again </h1>")    
-
+            try:
+                if int(otp_list[0])==int(name):
+                    Signup.objects.create(name=name_list[0],
+                    father_name=father_list[0],
+                    phone_number=phone_number_list[0],
+                    email_address=email_list[0],
+                    password=password_list[0],
+                    cnic=cnic_list[0]
+                    )
+                    variable_list.insert(0,1)
+                    messages.success(request,"Account created successfully !! ")
+                    return redirect('signup/')
+                else:
+                    variable_list.insert(0,"sarfraz")
+                    messages.success(request,"Incorrect OTP !! Try to resend ")
+            except:
+                messages.success(request,"There is some problem !!Please try again ")
     context={
         "form":form
     }        
     return render(request,"otp_template.html",context)        
 
 def reverification(request):
-
     if variable_list[0]==1:
-        return HttpResponse("<h1 align='center'>Your Account is Alraedy Verified Succcessfully. You can Now login  </h1>")
+        return HttpResponse("<h2 align='center'>Your Account is already created !! You can now login !!</h2>")
     else:    
-        otp=random.randint(100000,999999)
-        empty(otp_list)
-        otp_list.append(otp)
-        print("reverified otp is ",otp)
-        subject="Reverification of OTP "
-        message="Dear  "+name_list[0]+ f", \n  Your One Time Password is {otp}"
-        from_email=settings.EMAIL_HOST_USER
-        to_list=[
-        email_list[0]
-        ]   
-        send_mail(subject,message,from_email,to_list,fail_silently=False)
-        return HttpResponse(f"<h3 align='center'>We Just have sent an email to {email_list[0]} for reverification.Please check and activate your account </h3>")
+        try:
+            otp=random.randint(100000,999999)
+            empty(otp_list)
+            otp_list.append(otp)
+            print("reverified otp is ",otp)
+            subject="Reverification of OTP "
+            message="Dear  "+name_list[0]+ f", \n  Your One Time Password is {otp}"
+            from_email=settings.EMAIL_HOST_USER
+            to_list=[
+            email_list[0]
+            ]   
+            send_mail(subject,message,from_email,to_list,fail_silently=False)
+            return HttpResponse(f"<h1 align='center'>We Just have sent an email to {email_list[0]} for reverification !!</h1> ")
+        except:
+            return HttpResponse("<h1 align='center'>There is some problem please try again !!</h3>")
 def second_url(request):
     return render(request,"mainpage.html")  
-
 def third_url(request):
     form=Admissionf()
     if request.method=="POST":
@@ -207,7 +231,7 @@ def fourth_url(request):
                 send_mail(subject,message,from_email,to_list,fail_silently=False)
                 return redirect('main/')
             else:
-                return HttpResponse("<h1 align='center'>Sorry !! The user with this data is not present in no registered</h1>")
+                messages.success(request,"No user with this data is registered  !!")
         else:
             print(form.errors) 
     context={
@@ -444,4 +468,41 @@ def repeat(request):
     return render(request,"repeat_data.html",context)    
 
 def new(request):
-    return render(request,'Quid.html')    
+    return render(request,'Quid.html')   
+
+def get_detail(request):
+    form=Detail()
+    if request.method=="POST":
+        form=Detail(request.POST)
+        if form.is_valid:
+            cnic=request.POST['cnic']
+            query=f"select* from myapp_signup where cnic = '{cnic}' "
+            cursor.execute(query)
+            variable=cursor.fetchone()
+            if variable is not None:
+                context1={
+                    "name":variable[0],
+                    "father_name":variable[1],
+                    "phone_number":variable[2],
+                    "email":variable[3],
+                    "password":variable[4],
+                    "cnic":variable[5]
+                }
+                html_message=render_to_string('detail_email.html',context1)
+                plain_message=strip_tags(html_message)
+                my_subject="Data Recovery email "
+                message=EmailMultiAlternatives(
+                    body=plain_message,
+                    subject=my_subject,
+                    to=[variable[3]],
+                    from_email=None
+                )
+                message.attach_alternative(html_message,"text/html")
+                message.send()
+                messages.success(request,"An email has been sent to the email related to this cnic ")
+    context2={
+        "form":form
+    }            
+    return render(request,"request_for_detail.html",context2)    
+
+
